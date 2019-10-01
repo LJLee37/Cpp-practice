@@ -1,3 +1,4 @@
+#include <cinttypes>
 #ifndef DBDBLLIST
 #define DBDBLLIST
 template <typename T>
@@ -5,33 +6,34 @@ class node
 {
 private:
 	T data{};
-	node* next{nullptr}, prev{nullptr};
+	node* next_{nullptr};
+       	node* prev_{nullptr};
 public:
-	node* next(){return next;}
-	node* prev(){return prev;}
-	void link_next(node* n){next=n;}
-	void link_prev(node* p){prev=p;}
+	node* next(){return next_;}
+	node* prev(){return prev_;}
+	void link_next(node* n){next_=n;}
+	void link_prev(node* p){prev_=p;}
 	void out_of_list() // Use with serious caution!
 	{
-		if(prev != nullptr)
+		if(prev_ != nullptr)
 			prev->link_next(next);
-		if(next != nullptr)
+		if(next_ != nullptr)
 			next->link_prev(prev);
-		prev = nullptr;
-		next = nullptr;
+		prev_ = nullptr;
+		next_ = nullptr;
 	}
 	node(){}
 	node(T d, node* p):
 		data{d},
-		prev{p}
+		prev_{p}
 	{prev->link_next(this);}
 	node(T d, node* p, node* n):
 		data{d},
-		prev{p},
-		next{n}
+		prev_{p},
+		next_{n}
 	{
-		prev->link_next(this);
-		next->link_prev(this);
+		prev_->link_next(this);
+		next_->link_prev(this);
 	}
 	~node()
 	{
@@ -44,7 +46,8 @@ template <typename T>
 class dbdbllist
 {
 private:
-	node<T>* head{}, cur{};
+	node<T>* head{};
+       	node<T>* cur{};
 	uint16_t num{0};
 public:
 	dbdbllist()
@@ -59,7 +62,5 @@ public:
 	~dbdbllist();
 	void insert(T d);
 };
-
-typedef dbdbllist list;
 
 #endif

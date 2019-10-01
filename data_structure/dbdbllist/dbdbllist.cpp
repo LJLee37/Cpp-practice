@@ -1,6 +1,7 @@
 #include "dbdbllist.hpp"
 
-bool list::first(T* d)
+template <typename T>
+bool dbdbllist<T>::first(T* d)
 {
 	cur = head-> next();
 	if(cur == nullptr)
@@ -12,7 +13,8 @@ bool list::first(T* d)
 	}
 }
 
-bool list::next(T* d)
+template <typename T>
+bool dbdbllist<T>::next(T* d)
 {
 	if(cur-> next() == nullptr)
 		return false;
@@ -21,7 +23,8 @@ bool list::next(T* d)
 	return true;
 }
 
-bool list::prev(T* d)
+template <typename T>
+bool dbdbllist<T>::prev(T* d)
 {
 	if((cur->prev() == head)||(cur == head))
 		return false;
@@ -30,15 +33,18 @@ bool list::prev(T* d)
 	return true;
 }
 
-void list::insert(T d)
+template <typename T>
+void dbdbllist<T>::insert(T d)
 {
 	if(cur-> next() == nullptr)
 		auto temp = new node<T>(d, cur);
 	else
 		auto temp = new node<T>(d, cur, cur-> next());
+	num++;
 }
 
-list::~list()
+template <typename T>
+dbdbllist<T>::~dbdbllist()
 {
 	if(!first(nullptr))
 		delete head;

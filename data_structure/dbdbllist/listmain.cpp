@@ -1,6 +1,6 @@
 #include "dbdbllist.hpp"
 int main()
 {
-	list<int> nums;
+	dbdbllist<int> nums;
 	return 0;
 }	
