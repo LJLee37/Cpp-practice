@@ -16,9 +16,9 @@ public:
 	void out_of_list() // Use with serious caution!
 	{
 		if(prev_ != nullptr)
-			prev->link_next(next);
+			prev_->link_next(next_);
 		if(next_ != nullptr)
-			next->link_prev(prev);
+			next_->link_prev(prev_);
 		prev_ = nullptr;
 		next_ = nullptr;
 	}
@@ -26,7 +26,7 @@ public:
 	node(T d, node* p):
 		data{d},
 		prev_{p}
-	{prev->link_next(this);}
+	{prev_->link_next(this);}
 	node(T d, node* p, node* n):
 		data{d},
 		prev_{p},
@@ -59,8 +59,59 @@ public:
 	bool next(T* d);
 	bool prev(T* d);
 	auto count(){return num;}
-	~dbdbllist();
+	~dbdbllist()
+	{
+		if(!first(nullptr))
+			delete head;
+		do
+			delete cur-> prev();
+		while(next(nullptr));
+		delete cur;
+	}
 	void insert(T d);
 };
+
+template <typename T>
+bool dbdbllist<T>::first(T* d)
+{
+	cur = head-> next();
+	if(cur == nullptr)
+		return false;
+	else
+	{
+		*d = cur->getd();
+		return true;
+	}
+}
+
+template <typename T>
+bool dbdbllist<T>::next(T* d)
+{
+	if(cur-> next() == nullptr)
+		return false;
+	cur = cur-> next();
+	*d = cur-> getd();
+	return true;
+}
+
+template <typename T>
+bool dbdbllist<T>::prev(T* d)
+{
+	if((cur->prev() == head)||(cur == head))
+		return false;
+	cur = cur-> prev();
+	*d = cur-> getd();
+	return true;
+}
+
+template <typename T>
+void dbdbllist<T>::insert(T d)
+{
+	if(cur-> next() == nullptr)
+		auto temp = new node<T>(d, cur);
+	else
+		auto temp = new node<T>(d, cur, cur-> next());
+	num++;
+}
 
 #endif
