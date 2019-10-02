@@ -1,4 +1,6 @@
 #include <cinttypes>
+#include <iostream>
+using namespace std;
 #ifndef DBDBLLIST
 #define DBDBLLIST
 template <typename T>
@@ -15,12 +17,15 @@ public:
 	void link_prev(node* p){prev_=p;}
 	void out_of_list() // Use with serious caution!
 	{
+		cout << "out_of_list called()" << endl;
 		if(prev_ != nullptr)
 			prev_->link_next(next_);
 		if(next_ != nullptr)
 			next_->link_prev(prev_);
+		cout << "link complete" << endl;
 		prev_ = nullptr;
 		next_ = nullptr;
+		cout << "end of out_of_list()" << endl;
 	}
 	node(){}
 	node(T d, node* p):
@@ -61,8 +66,11 @@ public:
 	auto count(){return num;}
 	~dbdbllist()
 	{
-		if(!first(nullptr))
+		if(num == 0)
+		{
 			delete head;
+			return;
+		}
 		do
 			delete cur-> prev();
 		while(next(nullptr));
