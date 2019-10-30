@@ -1,6 +1,8 @@
+#include <iostream>
 #include "dbdbllist.hpp"
 int main()
 {
-	list<int> nums;
+	dbdbllist<int> nums;
+	std::cout << "list created. " << std::endl;
 	return 0;
 }	
