@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stack>
 using namespace std;
 
 
@@ -26,13 +27,13 @@ int main()
     cout << "Enter your infix statement.\n";
     string statement;
     cin >> statement;
-    check_valid(&statement);
-    convert_postfix(&statement);
+    check_valid(&statement);//Error
+    convert_postfix(&statement);//Error
     cout << "Converted statement is : " << statement << endl;
     return 0;
 }
 
-void check_calid(string& stm)
+void check_valid(string& stm)
 {
     char numsample[11];
     for (char i = '0'; i <= '9'; i++)
