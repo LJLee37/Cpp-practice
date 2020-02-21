@@ -1,0 +1,18 @@
+typedef struct{
+	int data;
+	Node* next = NULL;
+} Node;
+
+typedef struct{
+	Node* head;
+	Node* cur;
+} List;
+
+list remove
+list append
+list delete
+list init
+list sort//나중에.
+list find//정렬 된 후.
+list index
+
