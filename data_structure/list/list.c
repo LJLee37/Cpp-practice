@@ -6,12 +6,12 @@
 
 //data types
 typedef int Data;
-typedef struct
+typedef struct node
 {
 	Data data;
-	Node* next;
+	struct node* next;
 } Node;
-typedef struct
+typedef struct list
 {
 	Node* head;
 	Node* cur;
@@ -40,9 +40,9 @@ int main()
 	Data tempData;
 	while(true)
 	{
-		printf("1. Current data\t2. Head data\t3. Next\t4. Insert data\t5. Remove data\6. Delete list\n");
+		printf("1. Current data\t2. Head data\t3. Next\t4. Insert data\t5. Remove data\t6. Delete list\n");
 		printf("Select : ");
-		scanf("%d", option);
+		scanf("%d", &option);
 		switch (option)
 		{
 		case 1:
@@ -87,8 +87,10 @@ int main()
 //function definitions
 List* listInit(int data)
 {
-	List* retval = malloc(sizeof(List));
-	Node* temp = malloc(sizeof(Node));
+	List* retval;
+	retval = malloc(sizeof(List));
+	Node* temp;
+	temp = malloc(sizeof(Node));
 	temp->data = data;
 	temp->next = NULL;
 	retval->head = temp;
