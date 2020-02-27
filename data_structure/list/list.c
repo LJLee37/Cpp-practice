@@ -66,13 +66,13 @@ int main()
 				printf("Failed\n");
 			break;
 		case 5:
-			if(listDelete(list))
+			if(listRemove(list))
 				printf("Success\n");
 			else
 				printf("Failed\n");
 			break;
 		case 6:
-			if(listRemove(list))
+			if(listDelete(list))
 				printf("Success\n");
 			else
 				printf("Failed\n");
