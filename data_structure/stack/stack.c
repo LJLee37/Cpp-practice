@@ -66,7 +66,7 @@ Data stack_pop(Stack* target)
 	NodePtr tempNode = target->top;
 	target->top = tempNode -> next;
 	free(tempNode);
-	nodeNumber--;
+	target->nodeNumber--;
 	return retval;
 }
 
