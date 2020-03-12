@@ -41,7 +41,7 @@ vector<string> sort(vector<string> wordList)
                         temptarget = i;
                 }
         retval.push_back(wordList[temptarget]);
-        wordList[temptarget] = wordList.back;
+        wordList[temptarget] = wordList.back();
         wordList.pop_back();
         if(wordList.size() == 0)
             sorted = true;
