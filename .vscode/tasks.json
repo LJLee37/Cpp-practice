@@ -60,7 +60,7 @@
         },
         {
             "label": "execute",
-            "command": "${fileDirname}${fileBasenameNoExtension}.out",
+            "command": "${fileDirname}/${fileBasenameNoExtension}.out",
             "group": {
                 "kind": "test",
                 "isDefault": true
