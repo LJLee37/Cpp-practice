@@ -27,8 +27,8 @@ int main()
     cout << "Enter your infix statement.\n";
     string statement;
     cin >> statement;
-    check_valid(&statement);//Error
-    convert_postfix(&statement);//Error
+    check_valid(statement);//Error
+    convert_postfix(statement);//Error
     cout << "Converted statement is : " << statement << endl;
     return 0;
 }
