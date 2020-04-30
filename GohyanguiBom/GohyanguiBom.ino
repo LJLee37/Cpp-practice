@@ -8,7 +8,7 @@ const int le[] = {1000, 1000, 500, 500, 1000, 1000, 1000, 2000, 1000, 1000, 1000
 int i = 0;
 void loop()
 {
-    if(i == 60)
+    if(i == 59)
         i = 0;
     tone(p, pi[i]);
     delay(le[i]);
