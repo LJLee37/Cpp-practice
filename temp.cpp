@@ -1,18 +1,19 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <vector>
+#include <iostream>
 using namespace std;
-int main()
+int main(void)
 {
-    auto a = new int(3);
-    try
+    vector<vector<int>> arr;
+    for(int i = 0; i < 3; i++)
     {
-        delete a;
-        if(a != nullptr)
-            cout << "내용물 없으면 비교 가능"<< endl;
+        for(int j = 0; j < 4; j++)
+        {
+            arr[i][j]=i+j;
+        }
     }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-        return 1;
-    }
-    return 0;
+    int num=0;
+    for(auto i  = 0; i < arr.size(); i++)
+        num += std::count(arr[i].begin(),arr[i].end(),1);
+    cout << num << endl; 
 }
