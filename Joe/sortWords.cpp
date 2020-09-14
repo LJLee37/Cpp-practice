@@ -20,6 +20,7 @@ vector<string> sort(vector<string> wordList)
                 temptarget = i;
             }
             else if(temp1 == wordList[i][0])
+            {
                 if (temptarget == wordList.size())
                     temptarget = i;
                 else
@@ -40,6 +41,7 @@ vector<string> sort(vector<string> wordList)
                     if((!isTempTargetPrier && temptarget != i) && (wordList[i].length() < wordList[temptarget].length()))
                         temptarget = i;
                 }
+            }
         retval.push_back(wordList[temptarget]);
         wordList[temptarget] = wordList.back();
         wordList.pop_back();
@@ -55,7 +57,7 @@ int main()
     vector<string> wordList;
     string tempString;
     for (int i = 0; i < wordAmount; i++)
-    {    
+    {
         cin >> tempString;
         wordList.push_back(tempString);
     }
