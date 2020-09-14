@@ -1,3 +1,4 @@
+#pragma GCC diagnostic ignored "-Wc++11-extensions"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,7 +12,8 @@ int main()
     file << "num1 = int(input(\"num1 : \"))" << endl;
     file << "sign = input(\"sing : \")" << endl;
     file << "num2 = int(input(\"num2 : \"))" << endl;
-    for (auto i : {'+','-','*','/'})
+    char opers[] = {'+','-','*','/'};
+    for (auto i : opers)
     {
         for (auto j = 1; j < 10; j++)
         {
@@ -26,10 +28,10 @@ int main()
                     break;
                 case '-':
                     file << j - k;
-                    break; 
+                    break;
                 case '*':
                     file << j * k;
-                    break; 
+                    break;
                 case '/':
                     file << j / k;
                     break;
